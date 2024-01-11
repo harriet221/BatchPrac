@@ -14,7 +14,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Slf4j
 @Configuration
-
 public class BatchConfiguration {
     @Bean
     public Job simpleJob1(JobRepository jobRepository, Step simpleStep1) {
@@ -25,7 +24,8 @@ public class BatchConfiguration {
     @Bean
     public Step simpleStep1(JobRepository jobRepository, Tasklet testTasklet, PlatformTransactionManager platformTransactionManager){
         return new StepBuilder("simpleStep1", jobRepository)
-                .tasklet(testTasklet, platformTransactionManager).build();
+                .tasklet(testTasklet, platformTransactionManager)
+                .build();
     }
     @Bean
     public Tasklet testTasklet(){
